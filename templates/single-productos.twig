@@ -1,0 +1,64 @@
+{% extends "base.twig" %}
+
+    {% block content %}
+    <!-- esta seria el post de ese producto -->
+        <div class="#container">
+            <div class="float-left py-10">
+                <img src={{post.thumbnail.src}} alt="foto-producto"/>
+            </div>
+            <diV class="float-rigth">
+        <!--  Categoria del producto  -->
+                <h3 class="text-bold text-2xl">Categoria del producto:</h3>
+
+                <div class="uppercase" name="{{post.post_title}}/#categoria" />
+                {{post.categoria_de_producto}}
+                </div>
+                <hr>
+                <!--   Descripcion del producto   -->
+                <h3 class="text-bold text-2xl">Descripcion del producto:</h3>
+                
+                <div class="#descripcion" name="{{post.post_title}}/#descripcion" />
+                {{post.descripcion_del_producto}}
+                </div>
+                <hr>   
+                <!--  Precio    -->
+                <h3 class="text-bold text-2xl">Precio del producto:</h3>
+                <p>{{post.precio}} €</p>
+                <hr>
+                            
+                <!--  Iva    -->
+                
+                <h3 class="text-bold text-2xl">Iva :</h3>
+                <p> {{Opost.iva}} €</p>
+                <hr>
+
+                <!--  Precio con iva    -->
+              
+                <h3 class="text-bold text-2xl">Precio con iva:</h3>
+                <p> {{Opost.coniva}} €</p>
+                <hr>
+                
+                <!--  Post relacionados    -->
+                <h3 class="text-bold text-2xl">Post relacionados<h3>
+                    <ul class="flex inline-block">
+                    
+                        {% for item in Post(post.post_relacionados) %}
+                           <a href="{{item.link}}"><img class="h-20 w-20 mx-14" src={{item.thumbnail.src}} alt="producto-relacionado-{{item.title}}"/><li class="mx-14"> {{item.title}} </li></a>
+                        {% endfor %}
+                    </ul>
+                <hr>
+                <!--  Productos relacionados    -->
+                <!-- Hay que poner las imagenes-->
+                <h3 class="text-bold text-2xl">Productos relacionados<h3>
+                    <ul class="flex inline-block">
+                        {% for item in Post(post.productos_relacionados) %}
+                           <a href="{{item.link}}"><img class="h-20 w-20 mx-14" src={{item.thumbnail.src}} alt="producto-relacionado-{{item.title}}"/><li class="mx-14"> {{item.title}} </li></a>
+                        {% endfor %}
+                    </ul>
+            <div>
+            <div class="clear-both">
+                <button href="#comprar" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Comprar</button>
+                <button href="#carrito" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Añadir al Carrito</button>
+            </div>
+        </div>
+    {% endblock %}
